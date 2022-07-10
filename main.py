@@ -1,7 +1,10 @@
 import random
 import ast
 
-from classes.game_classes import Character, Product, Shop, Inventory
+from classes.character import Character
+from classes.inventory import Inventory
+from classes.product import Product
+from classes.shop import Shop
 
 def battle(hero, monster):
     print("FIGHT!")

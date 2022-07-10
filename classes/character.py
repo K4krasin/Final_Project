@@ -27,7 +27,7 @@ class Character:
         while i < get_points:
             print("Distribute point:")
             try:
-                print("1 - Your strenght:" + str(self.strength) + "\n2 - Your dexterity: " + str(self.dex) + "\n3 - Your intelligence: " + str(self.int))
+                print("1 - Your strength:" + str(self.strength) + "\n2 - Your dexterity: " + str(self.dex) + "\n3 - Your intelligence: " + str(self.int))
                 choise = int(input("Add point to your statistics: "))
                 if choise == 1:
                     self.strength += 1
@@ -71,22 +71,24 @@ class Character:
         with open(f'{self.name}.txt', 'w') as f:
             name = hero.name
             hp = hero.hp
-            strenght = hero.strenght
+            strength = hero.strength
             dex = hero.dex
             int = hero.int
             money = hero.money
             max_hp = hero.max_hp
             level = hero.level
-            save_hero = [name, hp, strenght, dex,int, money, max_hp, level]
+            save_hero = [name, hp, strength, dex,int, money, max_hp, level]
             f.write(str(save_hero))
 
             with open(f'{self.name}_monsters.txt', 'w', encoding='UTF-8') as f:
                 f.write(str(Character.T1_monsters))
+        with open(f'{self.name}_monsters.txt', 'w', encoding='UTF-8') as f:
+            f.write(str(Character.T1_monsters))
 
 
 
     def show_stats(self):
-        print(f'Max hp =  {round(self.max_hp)}\nHp = {round(self.hp)}\nStrenght = {self.strength}\nDexyerity = {self.dex}\nIntelligence = {self.int}\nMoney = {self.money}\nLevel = {self.level}')
+        print(f'Max hp =  {round(self.max_hp)}\nHp = {round(self.hp)}\nStrength = {self.strength}\nDexyerity = {self.dex}\nIntelligence = {self.int}\nMoney = {self.money}\nLevel = {self.level}')
 
     def get_monster(self):
         with open('Tier1_monsters', encoding='UTF-8') as f:
@@ -130,64 +132,11 @@ class Character:
         else:
             print()
 
-    def change_stats(self, name, strenght, intel, dex, price):
-        self.strength += strenght
+    def change_stats(self, strength, intel, dex, price):
+        self.strength += strength
         self.int += intel
         self.dex += dex
         self.money -= price
-
-
-
-class Product:
-    def __init__(self, name, strenght, intel, dex, price, level):
-        self.name = name
-        self.strenght = strenght
-        self.intel = intel
-        self.dex = dex
-        self.price = price
-        self.level = level
-
-    def product_show(self):
-        print(self.name.title(), self.strenght, self.intel, self.dex, self.price, self.level)
-
-    def product_buy(self, money, level):
-        if self.level > level:
-            print('You dont have enuogh level')
-        else:
-            if money >= self.price:
-                print('Sold')
-                return self.name
-            else:
-                "Its too expensive"
-
-
-
-
-class Shop:
-    def __init__(self, products=[]):
-        self.products = products
-
-    def show_all(self):
-        for index, item in enumerate(self.products):
-            print(index, end=' - ')
-            Product.product_show(item)
-
-    def buy(self, index, wallet, level):
-        selected = self.products[index]
-        return Product.product_buy(selected, wallet, level)
-
-class Inventory:
-    def __init__(self, inv = []):
-        self.inv = inv
-
-    def item_in_inv(self, name):
-        return name in self.inv
-
-
-    def show_items(self):
-        print(f'Your items: {self.inv}')
-
-
 
 
 
