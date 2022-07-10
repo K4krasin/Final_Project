@@ -71,7 +71,7 @@ class Character:
         with open(f'{self.name}.txt', 'w') as f:
             name = hero.name
             hp = hero.hp
-            strenght = hero.strenght
+            strength = hero.strength
             dex = hero.dex
             int = hero.int
             money = hero.money
